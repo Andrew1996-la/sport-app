@@ -1,9 +1,8 @@
 import { createStore } from "vuex";
+import exercise from "@/store/modules/exercise";
 
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    exercise,
+  },
 });
