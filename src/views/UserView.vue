@@ -23,14 +23,7 @@
         Добавить упражнение
       </button>
     </form>
-    <VModal
-      v-if="isShowModal"
-      ref="modalWindow"
-      @keydown.esc="closeModal"
-      tabindex="0"
-    >
-      <span class="modal__close" @click="closeModal">&#10010;</span>
-    </VModal>
+    <VModal v-if="isShowModal"> </VModal>
   </div>
 </template>
 
@@ -54,23 +47,7 @@ export default {
   computed: {
     ...mapGetters(["getExercises", "isShowModal"]),
   },
-  created() {
-    document.addEventListener("keyup", (evt) => {
-      if (evt.key === "Escape") {
-        this.closeModal();
-      }
-    });
-  },
 };
 </script>
 
-<style scoped lang="scss">
-.modal__close {
-  display: block;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 25px;
-  cursor: pointer;
-}
-</style>
+<style scoped lang="scss"></style>
