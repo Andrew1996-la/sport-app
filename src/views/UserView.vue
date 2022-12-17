@@ -3,13 +3,14 @@
     <h1>enter exercise</h1>
     <h3>List of exercises</h3>
     <ul>
-      <li
+      <ExerciseItem
         :key="exercise.id"
         v-for="exercise in getExercises"
+        :exercise="exercise"
         @click="showModal"
       >
         {{ exercise.nameOfExercise }}
-      </li>
+      </ExerciseItem>
     </ul>
     <form action="#" @submit.prevent="resetInput">
       <input
@@ -23,16 +24,17 @@
         Добавить упражнение
       </button>
     </form>
-    <VModal v-if="isShowModal"> </VModal>
+    <VModal v-if="isShowModal">{{ getCurrentNameOfExercise }}</VModal>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import VModal from "@/components/VModal";
+import ExerciseItem from "@/components/ExerciseItem";
 
 export default {
-  components: { VModal },
+  components: { ExerciseItem, VModal },
   data() {
     return {
       nameOfExercise: "",
@@ -45,7 +47,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getExercises", "isShowModal"]),
+    ...mapGetters(["getExercises", "isShowModal", "getCurrentNameOfExercise"]),
   },
 };
 </script>
